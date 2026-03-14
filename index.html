@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -14,6 +15,7 @@ margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:#19e4eb;
 color:#fff;
+scroll-behavior:smooth;
 }
 
 /* HEADER */
@@ -22,10 +24,11 @@ header{
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:5px 40px;
+padding:8px 40px;
 background:#081d33;
 position:sticky;
 top:0;
+z-index:999;
 }
 
 .logo{
@@ -35,7 +38,7 @@ height:55px;
 .join-btn{
 background:#f5b400;
 color:#000;
-padding:8px 18px;
+padding:8px 20px;
 border-radius:6px;
 font-weight:bold;
 text-decoration:none;
@@ -53,23 +56,24 @@ color:white;
 #menu{
 display:none;
 position:absolute;
-top:60px;
+top:65px;
 left:20px;
 background:#081d33;
-padding:20px;
+padding:15px;
 border-radius:8px;
-width:220px;
+width:170px;
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 
 #menu a{
 display:block;
-margin:10px 0;
+margin:8px 0;
 color:white;
 text-decoration:none;
 font-weight:bold;
 }
 
-/* ABOUT DROPDOWN */
+/* ABOUT SUBMENU */
 
 .submenu{
 position:relative;
@@ -79,12 +83,12 @@ position:relative;
 display:none;
 background:#0f2c4a;
 border-radius:6px;
-padding:8px;
+padding:6px;
 }
 
 .submenu-content a{
 display:block;
-padding:8px;
+padding:6px;
 font-size:14px;
 }
 
@@ -95,32 +99,15 @@ display:block;
 /* HERO */
 
 .hero{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-
 height:500px;
-padding:40px 20px;
-
 background:url('banner.png');
 background-size:contain;
 background-position:center;
 background-repeat:no-repeat;
 background-color:#081d33;
-}
-
-.hero .cta{
-position:absolute;
-bottom:60px;
-left:50%;
-transform:translateX(-50%);
 display:flex;
-flex-direction:column;
-gap:14px;
 align-items:center;
-z-index:3;
+justify-content:center;
 }
 
 /* BUTTON */
@@ -133,13 +120,20 @@ border:none;
 border-radius:6px;
 font-weight:bold;
 cursor:pointer;
-box-shadow:0 6px 18px rgba(0,0,0,0.35);
 }
 
 /* SECTIONS */
 
 section{
-padding:50px 40px;
+padding:60px 40px;
+opacity:0;
+transform:translateY(-50px);
+transition:all 1s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
 }
 
 h2{
@@ -156,13 +150,22 @@ gap:20px;
 background:#112f4f;
 padding:20px;
 border-radius:10px;
+transition:0.3s;
 }
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* FOOTER */
 
 footer{
 background:#081d33;
 text-align:center;
 padding:30px;
 }
+
+/* FORM */
 
 form input,form textarea{
 width:100%;
@@ -172,16 +175,15 @@ border-radius:5px;
 border:none;
 }
 
+/* GALLERY */
+
 .gallery img{
 width:100%;
 border-radius:10px;
 }
 
-@media(max-width:768px){
-.hero h1{font-size:32px}
-}
-
 </style>
+
 </head>
 
 <body>
@@ -196,77 +198,58 @@ border-radius:10px;
 
 <nav id="menu">
 
-<a href="#home">Home</a>
+<a href="#home" onclick="closeMenu()">Home</a>
 
 <div class="submenu">
-
 <a href="#about">About ▾</a>
 
 <div class="submenu-content">
-
-<a href="vision.html">Vision</a>
-<a href="mission.html">Mission</a>
-<a href="leadership.html">Leadership</a>
-<a href="collaboration.html">Collaboration</a>
-
+<a href="vision.html" onclick="closeMenu()">Vision</a>
+<a href="mission.html" onclick="closeMenu()">Mission</a>
+<a href="leadership.html" onclick="closeMenu()">Leadership</a>
+<a href="collaboration.html" onclick="closeMenu()">Collaboration</a>
+</div>
 </div>
 
-</div>
-
-<a href="#programs">Programs</a>
-<a href="#facilities">Facilities</a>
-<a href="#international">International</a>
-<a href="#talent">Talent Hunt</a>
-<a href="#events">Events</a>
-<a href="#partners">Sponsors</a>
-<a href="#media">Media</a>
-<a href="#admissions">Admissions</a>
-<a href="#contact">Contact</a>
+<a href="#programs" onclick="closeMenu()">Programs</a> <a href="#facilities" onclick="closeMenu()">Facilities</a> <a href="#international" onclick="closeMenu()">International</a> <a href="#talent" onclick="closeMenu()">Talent Hunt</a> <a href="#events" onclick="closeMenu()">Events</a> <a href="#partners" onclick="closeMenu()">Sponsors</a> <a href="#media" onclick="closeMenu()">Media</a> <a href="#admissions" onclick="closeMenu()">Admissions</a> <a href="#contact" onclick="closeMenu()">Contact</a>
 
 </nav>
 
 </header>
 
-<section class="hero" id="home">
-
-<h1></h1>
-<p></p>
-
-<div class="cta"></div>
-
-</section>
+<section class="hero" id="home"></section>
 
 <section id="about">
 
 <h2>About Us</h2>
 
 <p>
-Indo German Sports Academy is an international sports development initiative dedicated to identifying and nurturing young athletes across India.
+Indo German Sports Academy identifies and nurtures talented athletes across India using international training systems, German sports science and world-class coaching programs.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>Vision</h3>
-<p>Global center of sports excellence for young athletes.</p>
-<a href="vision.html" class="btn">Know Our Vision</a>
+<p>To create a world class sports ecosystem that develops Indian athletes into global champions.</p>
+<a href="vision.html" class="btn">Know Vision</a>
 </div>
 
 <div class="card">
 <h3>Mission</h3>
-<p>Develop talent through international training programs.</p>
-<a href="mission.html" class="btn">Know Our Mission</a>
+<p>Identify talent, provide international training, and build future sports leaders.</p>
+<a href="mission.html" class="btn">Know Mission</a>
 </div>
 
 <div class="card">
 <h3>Leadership</h3>
-<p>Experienced professionals guiding the academy.</p>
-<a href="leadership.html" class="btn">Know Our Leaders</a>
+<p>Experienced sports professionals guiding the academy vision.</p>
+<a href="leadership.html" class="btn">Know Leaders</a>
 </div>
 
 <div class="card">
 <h3>Collaboration</h3>
-<p>Indo-German sports science collaboration.</p>
+<p>Strategic Indo-German partnerships for sports excellence.</p>
 <a href="collaboration.html" class="btn">Know More</a>
 </div>
 
@@ -298,17 +281,17 @@ Indo German Sports Academy is an international sports development initiative ded
 
 <div class="card">
 <h3>Sports Science Lab</h3>
-<p>Modern performance analysis and athlete monitoring.</p>
+<p>Performance testing, recovery and athlete monitoring systems.</p>
 </div>
 
 <div class="card">
-<h3>Professional Stadiums</h3>
-<p>International standard training infrastructure.</p>
+<h3>Professional Grounds</h3>
+<p>International quality sports fields and stadium infrastructure.</p>
 </div>
 
 <div class="card">
-<h3>Fitness & Conditioning</h3>
-<p>Strength and endurance development programs.</p>
+<h3>Fitness Center</h3>
+<p>Strength conditioning and injury prevention programs.</p>
 </div>
 
 </div>
@@ -322,13 +305,13 @@ Indo German Sports Academy is an international sports development initiative ded
 <div class="grid">
 
 <div class="card">
-<h3>Germany Training Camps</h3>
-<p>Selected athletes train in Germany.</p>
+<h3>Germany Training</h3>
+<p>Top athletes receive international exposure in Germany.</p>
 </div>
 
 <div class="card">
 <h3>International Coaches</h3>
-<p>Global coaching expertise.</p>
+<p>Training from global professional coaches.</p>
 </div>
 
 <div class="card">
@@ -348,17 +331,17 @@ Indo German Sports Academy is an international sports development initiative ded
 
 <div class="card">
 <h3>School Partnerships</h3>
-<p>Identifying young talent across India.</p>
+<p>Talent identification across Indian schools.</p>
 </div>
 
 <div class="card">
-<h3>Scholarship Programs</h3>
-<p>Supporting talented athletes.</p>
+<h3>Scholarships</h3>
+<p>Scholarship support for talented athletes.</p>
 </div>
 
 <div class="card">
 <h3>Selection Trials</h3>
-<p>Nationwide trials for athletes.</p>
+<p>Nationwide trials for promising sports talent.</p>
 </div>
 
 </div>
@@ -373,17 +356,17 @@ Indo German Sports Academy is an international sports development initiative ded
 
 <div class="card">
 <h3>Indo German Championship</h3>
-<p>Annual sports competition.</p>
+<p>Annual championship tournament.</p>
 </div>
 
 <div class="card">
 <h3>Youth Sports Festival</h3>
-<p>Celebration of sports talent.</p>
+<p>Celebration of young athletes.</p>
 </div>
 
 <div class="card">
 <h3>Training Workshops</h3>
-<p>Professional coaching events.</p>
+<p>Skill development workshops and camps.</p>
 </div>
 
 </div>
@@ -395,7 +378,7 @@ Indo German Sports Academy is an international sports development initiative ded
 <h2>Sponsors & Partners</h2>
 
 <p>
-We collaborate with corporate partners and international sports institutions to develop world-class training programs.
+Our academy collaborates with global sports organizations, training institutes and corporate partners to build the future of Indian sports.
 </p>
 
 </section>
@@ -405,10 +388,8 @@ We collaborate with corporate partners and international sports institutions to 
 <h2>Media & Gallery</h2>
 
 <div class="grid gallery">
-
 <img src="peoples.png">
 <img src="peoples1.png">
-
 </div>
 
 </section>
@@ -417,7 +398,7 @@ We collaborate with corporate partners and international sports institutions to 
 
 <h2>Admissions</h2>
 
-<p>Register to join the Indo German Sports Academy.</p>
+<p>Register today to begin your journey with Indo German Sports Academy.</p>
 
 <button class="btn">Apply Online</button>
 
@@ -456,8 +437,30 @@ menu.style.display="none";
 }else{
 menu.style.display="block";
 }
-
 }
+
+function closeMenu(){
+document.getElementById("menu").style.display="none";
+}
+
+/* SCROLL ANIMATION */
+
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+sections.forEach(section=>{
+
+const position=section.getBoundingClientRect().top;
+const screen=window.innerHeight;
+
+if(position < screen-100){
+section.classList.add("show");
+}
+
+});
+
+});
 
 </script>
 
