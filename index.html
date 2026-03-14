@@ -9,12 +9,110 @@ header{display:flex;align-items:center;justify-content:space-between;padding:5px
 header img{height:55px}
 nav a{margin:0 12px;color:#fff;text-decoration:none;font-weight:bold}
 nav a:hover{color:#140f00}
-.hero{display:flex;flex-direction:column;align-items:center;height:300px;justify-content:center;text-align:center;padding:140px 8px;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('banner.png');background-size:cover;background-position:center top;background-repeat:no-repeat}
-.hero h1{font-size:48px;margin:10px}
-.hero p{font-size:20px;max-width:600px}
-.btn{padding:5px 24px;margin:10px;background:#f5b400;color:#000;border:none;border-radius:5px;font-weight:bold;cursor:pointer}
+/* replace your existing .hero block with this */
+.hero{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+height:500px;
+
+padding:40px 20px;
+
+background:url('banner.png');
+
+background-size:contain;
+background-position:center;
+background-repeat:no-repeat;
+
+background-color:#081d33;
+}
+
+/* new CTA positioning */
+.hero .cta{
+  position:absolute;
+  bottom:60px;                       /* distance from bottom of hero - change to taste */
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+  z-index:3;                          /* stay on top of overlay */
+}
+
+/* improve button visuals so they read on the image */
+.btn{
+  padding:12px 28px;
+  margin:0;
+  background:#f5b400;
+  color:#000;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+}
+
+
 section{padding:50px 40px}
+.menu-btn{
+font-size:28px;
+cursor:pointer;
+color:white;
+}
+
+#menu{
+display:none;
+position:absolute;
+top:60px;
+right:20px;
+background:#081d33;
+padding:15px;
+border-radius:8px;
+flex-direction:column;
+}
+
+#menu a{
+display:block;
+margin:10px 0;
+}
 h2{color:#0e0a01}
+.join-btn{
+background:#f5b400;
+color:#000;
+padding:8px 18px;
+border-radius:6px;
+font-weight:bold;
+text-decoration:none;
+
+margin:0 auto;
+}
+
+.join-btn:hover{
+background:#ffd34d;
+}
+.submenu{
+position:relative;
+}
+
+.submenu-content{
+display:none;
+flex-direction:column;
+background:#0f2c4a;
+margin-left:10px;
+}
+
+.submenu-content a{
+padding:8px;
+font-size:14px;
+}
+
+.submenu:hover .submenu-content{
+display:flex;
+}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .card{background:#112f4f;padding:20px;border-radius:10px}
 footer{background:#081d33;text-align:center;padding:30px}
@@ -22,11 +120,30 @@ form input,form textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;
 .gallery img{width:100%;border-radius:10px}
 @media(max-width:768px){.hero h1{font-size:32px}}
 </style>
-</head><body><header>
+</head><body>
+    <header>
+
 <img src="logo.jpeg" alt="IGSA Logo">
-<nav>
+
+<a href="#admissions" class="join-btn">Join Us</a>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<nav id="menu">
+
 <a href="#home">Home</a>
-<a href="#about">About</a>
+
+<div class="submenu">
+<a href="#about">About ▼</a>
+
+<div class="submenu-content">
+<a href="#vision">Vision</a>
+<a href="#mission">Mission</a>
+<a href="#leadership">Leadership</a>
+<a href="#indo-german">Indo German Collaboration</a>
+</div>
+
+</div>
+
 <a href="#programs">Programs</a>
 <a href="#facilities">Facilities</a>
 <a href="#international">International</a>
@@ -36,22 +153,36 @@ form input,form textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;
 <a href="#media">Media</a>
 <a href="#admissions">Admissions</a>
 <a href="#contact">Contact</a>
+
 </nav>
-</header><section class="hero" id="home">
-<h1></h1>
-<p></p>
-<button class="btn">Join the Academy</button>
-<button class="btn">Partner With Us</button>
-</section><section id="about">
+
+</header>
+<section class="hero" id="home">
+  <h1></h1>
+  <p></p>
+
+  <!-- buttons placed in absolute positioned CTA so they sit lower on the poster -->
+  <div class="cta">
+    
+    
+  </div>
+</section>
+<section id="about">
 <h2>About Us</h2>
 <p>Indo German Sports Academy is an international sports development initiative dedicated to identifying and nurturing young athletes across India. The academy integrates German sports science, international coaching standards and modern training infrastructure.</p>
 <div class="grid">
 <div class="card"><h3>Vision</h3><p>To become a global center of sports excellence that transforms young athletes into international champions.</p></div>
 <div class="card"><h3>Mission</h3><p>Identify talent, provide international training, and promote Indo‑German sports collaboration.</p></div>
-<div class="card"><h3>Leadership</h3><p>Experienced sports professionals, international coaches and advisors guide our programs.</p></div>
+<div class="card"><h3>Leadership</h4><p>
+</p></div>
 <div class="card"><h3>Indo‑German Collaboration</h3><p>Combining Indian talent with German precision, discipline and sports science.</p></div>
 </div>
-</section><section id="programs">
+</section>
+
+
+
+<section id="programs">
+
 <h2>Sports Programs</h2>
 <div class="grid">
 <div class="card"><h3>Football Academy</h3><p>Professional football development programs for youth athletes.</p></div>
@@ -96,9 +227,8 @@ form input,form textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;
 </section><section id="media">
 <h2>Media & Gallery</h2>
 <div class="grid gallery">
-<img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf">
-<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
-<img src="https://images.unsplash.com/photo-1505842465776-3d90f6163101">
+<img src="peoples.png">
+<img src="peoples1.png">
 </div>
 </section><section id="admissions">
 <h2>Admissions</h2>
@@ -115,5 +245,16 @@ form input,form textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;
 </section><footer>
 <p>Indo German Sports Academy | www.igsports.in</p>
 <p>Where Indian Talent Meets German Excellence</p>
-</footer></body>
+</footer>
+<script>
+function toggleMenu(){
+var menu=document.getElementById("menu");
+if(menu.style.display==="block"){
+menu.style.display="none";
+}else{
+menu.style.display="block";
+}
+}
+</script>
+</body>
 </html>
