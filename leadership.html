@@ -9,12 +9,19 @@
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Arial, Helvetica, sans-serif;
 background:#19e4eb;
 color:#fff;
 }
+
+/* HEADER */
 
 header{
 display:flex;
@@ -37,6 +44,8 @@ text-decoration:none;
 font-weight:bold;
 }
 
+/* HERO */
+
 .hero{
 text-align:center;
 padding:80px 20px;
@@ -48,33 +57,34 @@ font-size:42px;
 margin-bottom:10px;
 }
 
+/* SECTION */
+
 section{
 padding:60px 40px;
 }
 
+/* GRID */
+
 .grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:30px;
 max-width:1200px;
 margin:auto;
 }
+
+/* CARD */
+
 .card{
 background:#112f4f;
-padding:50px;
+padding:40px 20px;
 border-radius:15px;
 text-align:center;
-
-height:200px;        /* fixed equal height */
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:flex-start;
+transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-6px);
-transition:0.3s;
+transform:translateY(-8px);
 }
 
 .card img{
@@ -83,6 +93,7 @@ height:120px;
 border-radius:50%;
 object-fit:cover;
 margin-bottom:15px;
+border:4px solid white;
 }
 
 .card h3{
@@ -93,16 +104,33 @@ margin:10px 0 5px;
 font-size:14px;
 opacity:0.9;
 }
+
 .leader-link{
 text-decoration:none;
 color:white;
 }
+
+/* FOOTER */
 
 footer{
 background:#081d33;
 text-align:center;
 padding:25px;
 margin-top:40px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+section{
+padding:40px 20px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
@@ -132,46 +160,46 @@ margin-top:40px;
 
 <div class="grid">
 
+<a href="vksingh.html" class="leader-link">
 <div class="card">
 
 <img src="vk.png">
 
-<h3>Vk Singh (Co-Founder)</h3>
-
-<p></p>
+<h3>VK Singh</h3>
+<p>Co-Founder</p>
 
 </div>
+</a>
 
-<div class="grid">
 
 <div class="card">
 
 <img src="an.png">
 
-<h3>Anand Singh (Co-Founder)</h3>
-
-<p></p>
+<h3>Anand Singh</h3>
+<p>Co-Founder</p>
 
 </div>
 
-<div class="grid">
 
 <div class="card">
 
 <img src="ba.png">
 
-<h3>Guruji Gautam Rishi (Co-Founder)</h3>
-
-<p></p>
+<h3>Guruji Gautam Rishi</h3>
+<p>Co-Founder</p>
 
 </div>
 
 
 <a href="indranilbasu.html" class="leader-link">
 <div class="card">
+
 <img src="ib.png">
+
 <h3>Indranil Basu</h3>
-<p>(CEO)</p>
+<p>CEO</p>
+
 </div>
 </a>
 
@@ -181,8 +209,6 @@ margin-top:40px;
 <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1">
 
 <h3>International Advisor</h3>
-
-<p></p>
 
 </div>
 
@@ -198,7 +224,6 @@ margin-top:40px;
 <p>Where Indian Talent Meets German Excellence</p>
 
 </footer>
-
 
 </body>
 </html>
