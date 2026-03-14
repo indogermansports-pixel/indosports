@@ -1,15 +1,98 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Indo German Sports Academy | IGSports</title>
+
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#19e4eb;color:#fff}
-header{display:flex;align-items:center;justify-content:space-between;padding:5px 40px;background:#081d33;position:sticky;top:0}
-header img{height:55px}
-nav a{margin:0 12px;color:#fff;text-decoration:none;font-weight:bold}
-nav a:hover{color:#140f00}
-/* replace your existing .hero block with this */
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#19e4eb;
+color:#fff;
+}
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:5px 40px;
+background:#081d33;
+position:sticky;
+top:0;
+}
+
+header img{
+height:55px;
+}
+
+.join-btn{
+background:#f5b400;
+color:#000;
+padding:8px 18px;
+border-radius:6px;
+font-weight:bold;
+text-decoration:none;
+margin:auto;
+}
+
+.menu-btn{
+font-size:28px;
+cursor:pointer;
+color:white;
+}
+
+/* MENU */
+
+#menu{
+display:none;
+position:absolute;
+top:60px;
+right:20px;
+background:#081d33;
+padding:20px;
+border-radius:8px;
+flex-direction:column;
+width:220px;
+}
+
+#menu a{
+display:block;
+margin:10px 0;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* ABOUT DROPDOWN */
+
+.submenu{
+position:relative;
+}
+
+.submenu-content{
+display:none;
+background:#0f2c4a;
+border-radius:6px;
+padding:8px;
+}
+
+.submenu-content a{
+display:block;
+padding:8px;
+font-size:14px;
+}
+
+.submenu:hover .submenu-content{
+display:block;
+}
+
+/* HERO */
+
 .hero{
 display:flex;
 flex-direction:column;
@@ -18,128 +101,113 @@ justify-content:center;
 text-align:center;
 
 height:500px;
-
 padding:40px 20px;
 
 background:url('banner.png');
-
 background-size:contain;
 background-position:center;
 background-repeat:no-repeat;
-
 background-color:#081d33;
 }
 
-/* new CTA positioning */
 .hero .cta{
-  position:absolute;
-  bottom:60px;                       /* distance from bottom of hero - change to taste */
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  align-items:center;
-  z-index:3;                          /* stay on top of overlay */
-}
-
-/* improve button visuals so they read on the image */
-.btn{
-  padding:12px 28px;
-  margin:0;
-  background:#f5b400;
-  color:#000;
-  border:none;
-  border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 6px 18px rgba(0,0,0,0.35);
-}
-
-
-section{padding:50px 40px}
-.menu-btn{
-font-size:28px;
-cursor:pointer;
-color:white;
-}
-
-#menu{
-display:none;
 position:absolute;
-top:60px;
-right:20px;
-background:#081d33;
-padding:15px;
-border-radius:8px;
+bottom:60px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
 flex-direction:column;
+gap:14px;
+align-items:center;
+z-index:3;
 }
 
-#menu a{
-display:block;
-margin:10px 0;
-}
-h2{color:#0e0a01}
-.join-btn{
+/* BUTTON */
+
+.btn{
+padding:12px 28px;
 background:#f5b400;
 color:#000;
-padding:8px 18px;
+border:none;
 border-radius:6px;
 font-weight:bold;
-text-decoration:none;
-
-margin:0 auto;
+cursor:pointer;
+box-shadow:0 6px 18px rgba(0,0,0,0.35);
 }
 
-.join-btn:hover{
-background:#ffd34d;
-}
-.submenu{
-position:relative;
+/* SECTIONS */
+
+section{
+padding:50px 40px;
 }
 
-.submenu-content{
-display:none;
-flex-direction:column;
-background:#0f2c4a;
-margin-left:10px;
+h2{
+color:#0e0a01;
 }
 
-.submenu-content a{
-padding:8px;
-font-size:14px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.submenu:hover .submenu-content{
-display:flex;
+.card{
+background:#112f4f;
+padding:20px;
+border-radius:10px;
 }
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#112f4f;padding:20px;border-radius:10px}
-footer{background:#081d33;text-align:center;padding:30px}
-form input,form textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;border:none}
-.gallery img{width:100%;border-radius:10px}
-@media(max-width:768px){.hero h1{font-size:32px}}
+
+footer{
+background:#081d33;
+text-align:center;
+padding:30px;
+}
+
+form input,form textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:5px;
+border:none;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+@media(max-width:768px){
+.hero h1{font-size:32px}
+}
+
 </style>
-</head><body>
-    <header>
+</head>
 
-<img src="logo.jpeg" alt="IGSA Logo">
+<body>
+
+<header>
+
+<img src="logo.jpeg">
 
 <a href="#admissions" class="join-btn">Join Us</a>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
 <nav id="menu">
 
 <a href="#home">Home</a>
 
 <div class="submenu">
-<a href="#about">About ▼</a>
+
+<a href="#about">About ▾</a>
 
 <div class="submenu-content">
-<a href="#vision">Vision</a>
-<a href="#mission">Mission</a>
-<a href="#leadership">Leadership</a>
-<a href="#indo-german">Indo German Collaboration</a>
+
+<a href="vision.html">Vision</a>
+<a href="mission.html">Mission</a>
+<a href="leadership.html">Leadership</a>
+<a href="#about">Indo German Collaboration</a>
+
 </div>
 
 </div>
@@ -157,104 +225,129 @@ form input,form textarea{width:100%;padding:10px;margin:8px 0;border-radius:5px;
 </nav>
 
 </header>
+
 <section class="hero" id="home">
-  <h1></h1>
-  <p></p>
 
-  <!-- buttons placed in absolute positioned CTA so they sit lower on the poster -->
-  <div class="cta">
-    
-    
-  </div>
+<h1></h1>
+<p></p>
+
+<div class="cta"></div>
+
 </section>
+
 <section id="about">
+
 <h2>About Us</h2>
-<p>Indo German Sports Academy is an international sports development initiative dedicated to identifying and nurturing young athletes across India. The academy integrates German sports science, international coaching standards and modern training infrastructure.</p>
+
+<p>
+Indo German Sports Academy is an international sports development initiative dedicated to identifying and nurturing young athletes across India. The academy integrates German sports science, international coaching standards and modern training infrastructure.
+</p>
+
 <div class="grid">
-<div class="card"><h3>Vision</h3><p>To become a global center of sports excellence that transforms young athletes into international champions.</p></div>
-<div class="card"><h3>Mission</h3><p>Identify talent, provide international training, and promote Indo‑German sports collaboration.</p></div>
-<div class="card"><h3>Leadership</h4><p>
-</p></div>
-<div class="card"><h3>Indo‑German Collaboration</h3><p>Combining Indian talent with German precision, discipline and sports science.</p></div>
+
+<div class="card">
+<h3>Vision</h3>
+<p>To become a global center of sports excellence that transforms young athletes into international champions.</p>
+<a href="vision.html" class="btn">Know About Our Vision</a>
 </div>
+
+<div class="card">
+<h3>Mission</h3>
+<p>Identify talent, provide international training, and promote Indo-German sports collaboration.</p>
+<a href="mission.html" class="btn">Know About Our Mission</a>
+</div>
+
+<div class="card">
+<h3>Leadership</h3>
+<p>Experienced sports professionals and international coaches guiding the academy.</p>
+<a href="leadership.html" class="btn">Know Our Leaders</a>
+</div>
+
+<div class="card">
+<h3>Indo-German Collaboration</h3>
+<p>Combining Indian talent with German precision, discipline and sports science.</p>
+</div>
+
+</div>
+
 </section>
-
-
 
 <section id="programs">
 
 <h2>Sports Programs</h2>
+
 <div class="grid">
-<div class="card"><h3>Football Academy</h3><p>Professional football development programs for youth athletes.</p></div>
-<div class="card"><h3>Cricket Academy</h3><p>Elite cricket coaching with performance analytics and modern training.</p></div>
-<div class="card"><h3>Badminton Academy</h3><p>High performance badminton training programs.</p></div>
-<div class="card"><h3>Tennis Academy</h3><p>Structured tennis coaching with international exposure.</p></div>
-<div class="card"><h3>Basketball Academy</h3><p>Competitive youth basketball development programs.</p></div>
+
+<div class="card"><h3>Football Academy</h3></div>
+<div class="card"><h3>Cricket Academy</h3></div>
+<div class="card"><h3>Badminton Academy</h3></div>
+<div class="card"><h3>Tennis Academy</h3></div>
+<div class="card"><h3>Basketball Academy</h3></div>
+
 </div>
-</section><section id="facilities">
-<h2>Training & Facilities</h2>
-<div class="grid">
-<div class="card"><h3>Training Methodology</h3><p>Scientific athlete development using global best practices.</p></div>
-<div class="card"><h3>Sports Science Lab</h3><p>Performance analysis, biomechanics testing and injury prevention.</p></div>
-<div class="card"><h3>Fitness & Conditioning</h3><p>Strength training and endurance programs for elite athletes.</p></div>
-<div class="card"><h3>Campus Infrastructure</h3><p>International standard grounds, courts, gym and residential facilities.</p></div>
-</div>
-</section><section id="international">
-<h2>International Programs</h2>
-<div class="grid">
-<div class="card"><h3>Germany Training Camps</h3><p>Advanced training opportunities in Germany.</p></div>
-<div class="card"><h3>Coaching Exchange</h3><p>German coaches training athletes and Indian coaches learning abroad.</p></div>
-<div class="card"><h3>International Tournaments</h3><p>Participation in global youth competitions.</p></div>
-<div class="card"><h3>Athlete Exchange</h3><p>Exposure programs connecting athletes internationally.</p></div>
-</div>
-</section><section id="talent">
-<h2>Talent Hunt</h2>
-<div class="grid">
-<div class="card"><h3>National Talent Identification</h3><p>Discovering young talent across India.</p></div>
-<div class="card"><h3>Scholarship Programs</h3><p>Supporting talented athletes from underprivileged backgrounds.</p></div>
-<div class="card"><h3>School Partnerships</h3><p>Grassroots sports development with educational institutions.</p></div>
-</div>
-</section><section id="events">
-<h2>Events & Tournaments</h2>
-<div class="grid">
-<div class="card"><h3>Indo German Championship</h3><p>Annual international sports tournament.</p></div>
-<div class="card"><h3>Sports Festivals</h3><p>Youth sports celebration events.</p></div>
-<div class="card"><h3>Event Calendar</h3><p>Upcoming competitions and academy activities.</p></div>
-</div>
-</section><section id="partners">
-<h2>Sponsors & Partners</h2>
-<p>We welcome corporate sponsors, CSR partners and international sports organizations to collaborate with Indo German Sports Academy.</p>
-</section><section id="media">
+
+</section>
+
+<section id="media">
+
 <h2>Media & Gallery</h2>
+
 <div class="grid gallery">
+
 <img src="peoples.png">
 <img src="peoples1.png">
+
 </div>
-</section><section id="admissions">
+
+</section>
+
+<section id="admissions">
+
 <h2>Admissions</h2>
-<p>Register to join the Indo German Sports Academy and begin your journey to becoming a global athlete.</p>
+
+<p>Register to join the Indo German Sports Academy.</p>
+
 <button class="btn">Apply Online</button>
-</section><section id="contact">
+
+</section>
+
+<section id="contact">
+
 <h2>Contact Us</h2>
+
 <form>
+
 <input type="text" placeholder="Your Name">
 <input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
+
 <button class="btn">Send Message</button>
+
 </form>
-</section><footer>
+
+</section>
+
+<footer>
+
 <p>Indo German Sports Academy | www.igsports.in</p>
 <p>Where Indian Talent Meets German Excellence</p>
+
 </footer>
+
 <script>
+
 function toggleMenu(){
 var menu=document.getElementById("menu");
+
 if(menu.style.display==="block"){
 menu.style.display="none";
 }else{
 menu.style.display="block";
 }
+
 }
+
 </script>
+
 </body>
 </html>
