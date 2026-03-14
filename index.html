@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 
@@ -10,11 +9,18 @@
 
 <style>
 
-body{
+/* GLOBAL FIX */
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Arial,Helvetica,sans-serif;
 background:#19e4eb;
-color:#fff;
+color:white;
 scroll-behavior:smooth;
 }
 
@@ -24,7 +30,7 @@ header{
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:8px 40px;
+padding:10px 40px;
 background:#081d33;
 position:sticky;
 top:0;
@@ -37,63 +43,73 @@ height:55px;
 
 .join-btn{
 background:#f5b400;
-color:#000;
+color:black;
 padding:8px 20px;
 border-radius:6px;
 font-weight:bold;
 text-decoration:none;
-margin:auto;
 }
 
 .menu-btn{
 font-size:28px;
 cursor:pointer;
-color:white;
 }
 
 /* MENU */
 
 #menu{
-display:none;
-position:absolute;
-top:65px;
-left:20px;
+position:fixed;
+left:-230px;
+top:0;
+width:230px;
+height:100%;
 background:#081d33;
-padding:15px;
-border-radius:8px;
-width:170px;
-box-shadow:0 8px 20px rgba(0,0,0,0.4);
+padding:30px 20px;
+transition:0.4s;
+z-index:1000;
+overflow-y:auto;
+}
+
+#menu.show{
+left:0;
 }
 
 #menu a{
 display:block;
-margin:8px 0;
+margin:14px 0;
 color:white;
 text-decoration:none;
 font-weight:bold;
+cursor:pointer;
 }
 
-/* ABOUT SUBMENU */
+.close-btn{
+font-size:26px;
+cursor:pointer;
+margin-bottom:20px;
+display:block;
+}
 
-.submenu{
-position:relative;
+/* ABOUT MENU */
+
+.submenu-title{
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
 }
 
 .submenu-content{
 display:none;
-background:#0f2c4a;
-border-radius:6px;
-padding:6px;
+padding-left:15px;
+}
+
+.submenu.active .submenu-content{
+display:block;
 }
 
 .submenu-content a{
-display:block;
-padding:6px;
 font-size:14px;
-}
-
-.submenu:hover .submenu-content{
-display:block;
+margin:8px 0;
 }
 
 /* HERO */
@@ -106,55 +122,103 @@ background-position:center;
 background-repeat:no-repeat;
 background-color:#081d33;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:46px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+/* SECTION */
+
+section{
+padding:60px 40px;
+}
+
+h2{
+color:#001;
+margin-bottom:25px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+/* CARD */
+
+.card{
+background:#112f4f;
+padding:25px;
+border-radius:10px;
+line-height:1.6;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+margin-bottom:15px;
 }
 
 /* BUTTON */
 
 .btn{
-padding:12px 28px;
 background:#f5b400;
-color:#000;
-border:none;
+padding:10px 18px;
 border-radius:6px;
+text-decoration:none;
+color:black;
 font-weight:bold;
-cursor:pointer;
+display:inline-block;
 }
 
-/* SECTIONS */
+/* STATS */
 
-section{
-padding:60px 40px;
-opacity:0;
-transform:translateY(-50px);
-transition:all 1s ease;
+.stats{
+background:#081d33;
+text-align:center;
 }
 
-section.show{
-opacity:1;
-transform:translateY(0);
-}
-
-h2{
-color:#0e0a01;
-}
-
-.grid{
+.stat-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+margin-top:20px;
 }
 
-.card{
-background:#112f4f;
-padding:20px;
+.stat{
+font-size:40px;
+font-weight:bold;
+color:#f5b400;
+}
+
+/* GALLERY */
+
+.gallery img{
+width:100%;
 border-radius:10px;
-transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
+/* FORM */
+
+form input,form textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:5px;
 }
 
 /* FOOTER */
@@ -165,23 +229,6 @@ text-align:center;
 padding:30px;
 }
 
-/* FORM */
-
-form input,form textarea{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:5px;
-border:none;
-}
-
-/* GALLERY */
-
-.gallery img{
-width:100%;
-border-radius:10px;
-}
-
 </style>
 
 </head>
@@ -190,72 +237,128 @@ border-radius:10px;
 
 <header>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="menu-btn" onclick="openMenu()">☰</div>
 
 <a href="#admissions" class="join-btn">Join Us</a>
 
 <img src="logo.jpeg" class="logo">
 
+</header>
+
+<!-- MENU -->
+
 <nav id="menu">
 
-<a href="#home" onclick="closeMenu()">Home</a>
+<span class="close-btn" onclick="closeMenu()">✕</span>
 
-<div class="submenu">
-<a href="#about">About ▾</a>
+<a onclick="goToSection('home')">Home</a>
+
+<div class="submenu" id="aboutMenu">
+<div class="submenu-title" onclick="toggleAbout()">About ▾</div>
 
 <div class="submenu-content">
-<a href="vision.html" onclick="closeMenu()">Vision</a>
-<a href="mission.html" onclick="closeMenu()">Mission</a>
-<a href="leadership.html" onclick="closeMenu()">Leadership</a>
-<a href="collaboration.html" onclick="closeMenu()">Collaboration</a>
-</div>
+<a href="vision.html">Vision</a>
+<a href="mission.html">Mission</a>
+<a href="leadership.html">Leadership</a>
+<a href="collaboration.html">Collaboration</a>
 </div>
 
-<a href="#programs" onclick="closeMenu()">Programs</a> <a href="#facilities" onclick="closeMenu()">Facilities</a> <a href="#international" onclick="closeMenu()">International</a> <a href="#talent" onclick="closeMenu()">Talent Hunt</a> <a href="#events" onclick="closeMenu()">Events</a> <a href="#partners" onclick="closeMenu()">Sponsors</a> <a href="#media" onclick="closeMenu()">Media</a> <a href="#admissions" onclick="closeMenu()">Admissions</a> <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<a onclick="goToSection('programs')">Programs</a>
+<a onclick="goToSection('facilities')">Facilities</a>
+<a onclick="goToSection('international')">International</a>
+<a onclick="goToSection('talent')">Talent Hunt</a>
+<a onclick="goToSection('events')">Events</a>
+<a onclick="goToSection('partners')">Sponsors</a>
+<a onclick="goToSection('media')">Media</a>
+<a onclick="goToSection('admissions')">Admissions</a>
+<a onclick="goToSection('contact')">Contact</a>
 
 </nav>
 
-</header>
+<!-- HERO -->
 
-<section class="hero" id="home"></section>
+<section class="hero" id="home">
+
+<h1>Indo German Sports Academy</h1>
+<p>Where Indian Talent Meets German Excellence</p>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+<h2>Academy Achievements</h2>
+
+<div class="stat-grid">
+
+<div>
+<div class="stat">500+</div>
+<p>Athletes Trained</p>
+</div>
+
+<div>
+<div class="stat">120+</div>
+<p>Medals Won</p>
+</div>
+
+<div>
+<div class="stat">8</div>
+<p>Countries Connected</p>
+</div>
+
+<div>
+<div class="stat">25+</div>
+<p>International Coaches</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
 
 <section id="about">
 
 <h2>About Us</h2>
 
-<p>
-Indo German Sports Academy identifies and nurtures talented athletes across India using international training systems, German sports science and world-class coaching programs.
+<p style="margin-bottom:20px;">
+
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>Vision</h3>
-<p>To create a world class sports ecosystem that develops Indian athletes into global champions.</p>
-<a href="vision.html" class="btn">Know Vision</a>
+<p>Build a world-class sports ecosystem for Indian athletes.</p>
+<a href="vision.html" class="btn">Know Our Vision</a>
 </div>
 
 <div class="card">
 <h3>Mission</h3>
-<p>Identify talent, provide international training, and build future sports leaders.</p>
-<a href="mission.html" class="btn">Know Mission</a>
+<p>Provide world-class coaching and international pathways.</p>
+<a href="mission.html" class="btn">Know Our Mission</a>
 </div>
 
 <div class="card">
 <h3>Leadership</h3>
-<p>Experienced sports professionals guiding the academy vision.</p>
-<a href="leadership.html" class="btn">Know Leaders</a>
+<p>Guided by experienced sports leaders and coaches.</p>
+<a href="leadership.html" class="btn">Know Our Leaders</a>
 </div>
 
 <div class="card">
 <h3>Collaboration</h3>
-<p>Strategic Indo-German partnerships for sports excellence.</p>
-<a href="collaboration.html" class="btn">Know More</a>
+<p>Indo-German partnership combining talent and sports science.</p>
+<a href="collaboration.html" class="btn">Know About Collaboration</a>
 </div>
 
 </div>
 
 </section>
+
+<!-- PROGRAMS -->
 
 <section id="programs">
 
@@ -263,15 +366,17 @@ Indo German Sports Academy identifies and nurtures talented athletes across Indi
 
 <div class="grid">
 
-<div class="card"><h3>Football Academy</h3></div>
-<div class="card"><h3>Cricket Academy</h3></div>
-<div class="card"><h3>Badminton Academy</h3></div>
-<div class="card"><h3>Tennis Academy</h3></div>
-<div class="card"><h3>Basketball Academy</h3></div>
+<div class="card">Football Academy</div>
+<div class="card">Cricket Academy</div>
+<div class="card">Badminton Academy</div>
+<div class="card">Tennis Academy</div>
+<div class="card">Basketball Academy</div>
 
 </div>
 
 </section>
+
+<!-- FACILITIES -->
 
 <section id="facilities">
 
@@ -279,24 +384,15 @@ Indo German Sports Academy identifies and nurtures talented athletes across Indi
 
 <div class="grid">
 
-<div class="card">
-<h3>Sports Science Lab</h3>
-<p>Performance testing, recovery and athlete monitoring systems.</p>
-</div>
-
-<div class="card">
-<h3>Professional Grounds</h3>
-<p>International quality sports fields and stadium infrastructure.</p>
-</div>
-
-<div class="card">
-<h3>Fitness Center</h3>
-<p>Strength conditioning and injury prevention programs.</p>
-</div>
+<div class="card">Sports Science Lab</div>
+<div class="card">Professional Grounds</div>
+<div class="card">Fitness Center</div>
 
 </div>
 
 </section>
+
+<!-- INTERNATIONAL -->
 
 <section id="international">
 
@@ -304,24 +400,15 @@ Indo German Sports Academy identifies and nurtures talented athletes across Indi
 
 <div class="grid">
 
-<div class="card">
-<h3>Germany Training</h3>
-<p>Top athletes receive international exposure in Germany.</p>
-</div>
-
-<div class="card">
-<h3>International Coaches</h3>
-<p>Training from global professional coaches.</p>
-</div>
-
-<div class="card">
-<h3>Global Competitions</h3>
-<p>Participation in international tournaments.</p>
-</div>
+<div class="card">Germany Training</div>
+<div class="card">International Coaches</div>
+<div class="card">Global Competitions</div>
 
 </div>
 
 </section>
+
+<!-- TALENT -->
 
 <section id="talent">
 
@@ -329,24 +416,15 @@ Indo German Sports Academy identifies and nurtures talented athletes across Indi
 
 <div class="grid">
 
-<div class="card">
-<h3>School Partnerships</h3>
-<p>Talent identification across Indian schools.</p>
-</div>
-
-<div class="card">
-<h3>Scholarships</h3>
-<p>Scholarship support for talented athletes.</p>
-</div>
-
-<div class="card">
-<h3>Selection Trials</h3>
-<p>Nationwide trials for promising sports talent.</p>
-</div>
+<div class="card">School Partnerships</div>
+<div class="card">Scholarships</div>
+<div class="card">Selection Trials</div>
 
 </div>
 
 </section>
+
+<!-- EVENTS -->
 
 <section id="events">
 
@@ -354,55 +432,58 @@ Indo German Sports Academy identifies and nurtures talented athletes across Indi
 
 <div class="grid">
 
-<div class="card">
-<h3>Indo German Championship</h3>
-<p>Annual championship tournament.</p>
-</div>
-
-<div class="card">
-<h3>Youth Sports Festival</h3>
-<p>Celebration of young athletes.</p>
-</div>
-
-<div class="card">
-<h3>Training Workshops</h3>
-<p>Skill development workshops and camps.</p>
-</div>
+<div class="card">Indo German Championship</div>
+<div class="card">Youth Sports Festival</div>
+<div class="card">Training Workshops</div>
 
 </div>
 
 </section>
+
+<!-- PARTNERS -->
 
 <section id="partners">
 
 <h2>Sponsors & Partners</h2>
+<p></p>
+<div class="grid">
 
-<p>
-Our academy collaborates with global sports organizations, training institutes and corporate partners to build the future of Indian sports.
-</p>
+<div class="card">Corporate Sponsorships</div>
+<div class="card">Digital media and broadcasting</div>
+<div class="card">Government Sports Grants</div>
+
+</div>
+
+
 
 </section>
+
+<!-- MEDIA -->
 
 <section id="media">
 
 <h2>Media & Gallery</h2>
 
 <div class="grid gallery">
+
 <img src="peoples.png">
 <img src="peoples1.png">
+
 </div>
 
 </section>
+
+<!-- ADMISSIONS -->
 
 <section id="admissions">
 
 <h2>Admissions</h2>
 
-<p>Register today to begin your journey with Indo German Sports Academy.</p>
-
 <button class="btn">Apply Online</button>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -410,7 +491,7 @@ Our academy collaborates with global sports organizations, training institutes a
 
 <form>
 
-<input type="text" placeholder="Your Name">
+<input type="text" placeholder="Name">
 <input type="email" placeholder="Email">
 <textarea placeholder="Message"></textarea>
 
@@ -422,45 +503,31 @@ Our academy collaborates with global sports organizations, training institutes a
 
 <footer>
 
-<p>Indo German Sports Academy | www.igsports.in</p>
-<p>Where Indian Talent Meets German Excellence</p>
+<p>Indo German Sports Academy</p>
+<p>www.igsports.in</p>
 
 </footer>
 
 <script>
 
-function toggleMenu(){
-var menu=document.getElementById("menu");
+/* MENU */
 
-if(menu.style.display==="block"){
-menu.style.display="none";
-}else{
-menu.style.display="block";
-}
+function openMenu(){
+document.getElementById("menu").classList.add("show");
 }
 
 function closeMenu(){
-document.getElementById("menu").style.display="none";
+document.getElementById("menu").classList.remove("show");
 }
 
-/* SCROLL ANIMATION */
-
-const sections=document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-
-sections.forEach(section=>{
-
-const position=section.getBoundingClientRect().top;
-const screen=window.innerHeight;
-
-if(position < screen-100){
-section.classList.add("show");
+function goToSection(id){
+closeMenu();
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-});
-
-});
+function toggleAbout(){
+document.getElementById("aboutMenu").classList.toggle("active");
+}
 
 </script>
 
