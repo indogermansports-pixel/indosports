@@ -16,6 +16,8 @@ background:#19e4eb;
 color:#fff;
 }
 
+/* HEADER */
+
 header{
 display:flex;
 align-items:center;
@@ -26,7 +28,7 @@ position:sticky;
 top:0;
 }
 
-header img{
+.logo{
 height:55px;
 }
 
@@ -52,11 +54,10 @@ color:white;
 display:none;
 position:absolute;
 top:60px;
-right:20px;
+left:20px;
 background:#081d33;
 padding:20px;
 border-radius:8px;
-flex-direction:column;
 width:220px;
 }
 
@@ -187,11 +188,11 @@ border-radius:10px;
 
 <header>
 
-<img src="logo.jpeg">
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <a href="#admissions" class="join-btn">Join Us</a>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<img src="logo.jpeg" class="logo">
 
 <nav id="menu">
 
@@ -240,38 +241,36 @@ border-radius:10px;
 <h2>About Us</h2>
 
 <p>
-Indo German Sports Academy is an international sports development initiative dedicated to identifying and nurturing young athletes across India. The academy integrates German sports science, international coaching standards and modern training infrastructure.
+Indo German Sports Academy is an international sports development initiative dedicated to identifying and nurturing young athletes across India.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>Vision</h3>
-<p>To become a global center of sports excellence that transforms young athletes into international champions.</p>
-<a href="vision.html" class="btn">Know About Our Vision</a>
+<p>Global center of sports excellence for young athletes.</p>
+<a href="vision.html" class="btn">Know Our Vision</a>
 </div>
 
 <div class="card">
 <h3>Mission</h3>
-<p>Identify talent, provide international training, and promote Indo-German sports collaboration.</p>
-<a href="mission.html" class="btn">Know About Our Mission</a>
+<p>Develop talent through international training programs.</p>
+<a href="mission.html" class="btn">Know Our Mission</a>
 </div>
 
 <div class="card">
 <h3>Leadership</h3>
-<p>Experienced sports professionals and international coaches guiding the academy.</p>
+<p>Experienced professionals guiding the academy.</p>
 <a href="leadership.html" class="btn">Know Our Leaders</a>
 </div>
 
 <div class="card">
 <h3>Collaboration</h3>
-<p>Combining Indian talent with German precision, discipline and sports science.</p>
-
-<a href="collaboration.html" class="btn">Collaboration</a>
-
+<p>Indo-German sports science collaboration.</p>
+<a href="collaboration.html" class="btn">Know More</a>
 </div>
 
-
+</div>
 
 </section>
 
@@ -288,6 +287,116 @@ Indo German Sports Academy is an international sports development initiative ded
 <div class="card"><h3>Basketball Academy</h3></div>
 
 </div>
+
+</section>
+
+<section id="facilities">
+
+<h2>Training Facilities</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Sports Science Lab</h3>
+<p>Modern performance analysis and athlete monitoring.</p>
+</div>
+
+<div class="card">
+<h3>Professional Stadiums</h3>
+<p>International standard training infrastructure.</p>
+</div>
+
+<div class="card">
+<h3>Fitness & Conditioning</h3>
+<p>Strength and endurance development programs.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="international">
+
+<h2>International Programs</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Germany Training Camps</h3>
+<p>Selected athletes train in Germany.</p>
+</div>
+
+<div class="card">
+<h3>International Coaches</h3>
+<p>Global coaching expertise.</p>
+</div>
+
+<div class="card">
+<h3>Global Competitions</h3>
+<p>Participation in international tournaments.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="talent">
+
+<h2>National Talent Hunt</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>School Partnerships</h3>
+<p>Identifying young talent across India.</p>
+</div>
+
+<div class="card">
+<h3>Scholarship Programs</h3>
+<p>Supporting talented athletes.</p>
+</div>
+
+<div class="card">
+<h3>Selection Trials</h3>
+<p>Nationwide trials for athletes.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="events">
+
+<h2>Sports Events</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Indo German Championship</h3>
+<p>Annual sports competition.</p>
+</div>
+
+<div class="card">
+<h3>Youth Sports Festival</h3>
+<p>Celebration of sports talent.</p>
+</div>
+
+<div class="card">
+<h3>Training Workshops</h3>
+<p>Professional coaching events.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="partners">
+
+<h2>Sponsors & Partners</h2>
+
+<p>
+We collaborate with corporate partners and international sports institutions to develop world-class training programs.
+</p>
 
 </section>
 

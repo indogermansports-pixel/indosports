@@ -54,15 +54,27 @@ padding:60px 40px;
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(4,1fr);
 gap:30px;
+max-width:1200px;
+margin:auto;
 }
-
 .card{
 background:#112f4f;
-padding:25px;
-border-radius:10px;
+padding:50px;
+border-radius:15px;
 text-align:center;
+
+height:200px;        /* fixed equal height */
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+}
+
+.card:hover{
+transform:translateY(-6px);
+transition:0.3s;
 }
 
 .card img{
@@ -80,6 +92,10 @@ margin:10px 0 5px;
 .card p{
 font-size:14px;
 opacity:0.9;
+}
+.leader-link{
+text-decoration:none;
+color:white;
 }
 
 footer{
@@ -118,23 +134,11 @@ margin-top:40px;
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1560250097-0b93528c311a">
+<img src="vk.png">
 
-<h3>Founder / Chairman</h3>
+<h3>Vk Singh (Co-Founder)</h3>
 
-<p>Visionary leader driving the Indo-German sports collaboration and athlete development programs.</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1560250097-0b93528c311a">
-
-<h3>Anand Singh</h3>
-
-<p>Visionary leader driving the Indo-German sports collaboration and athlete development programs.</p>
+<p></p>
 
 </div>
 
@@ -142,24 +146,34 @@ margin-top:40px;
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1560250097-0b93528c311a">
+<img src="an.png">
 
-<h3>Baba</h3>
+<h3>Anand Singh (Co-Founder)</h3>
 
-<p>Visionary leader driving the Indo-German sports collaboration and athlete development programs.</p>
+<p></p>
 
 </div>
 
+<div class="grid">
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2">
+<img src="ba.png">
 
-<h3>Sports Director</h3>
+<h3>Guruji Gautam Rishi (Co-Founder)</h3>
 
-<p>Oversees training methodology, athlete performance programs and international coaching collaboration.</p>
+<p></p>
 
 </div>
+
+
+<a href="indranilbasu.html" class="leader-link">
+<div class="card">
+<img src="ib.png">
+<h3>Indranil Basu</h3>
+<p>(CEO)</p>
+</div>
+</a>
 
 
 <div class="card">
@@ -168,7 +182,7 @@ margin-top:40px;
 
 <h3>International Advisor</h3>
 
-<p>Bringing German sports science expertise and global training standards.</p>
+<p></p>
 
 </div>
 
